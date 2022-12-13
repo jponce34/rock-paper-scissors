@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"
+        <title> rock paper scissors</title>
+    </head>
+        <body>
+            <script>
+               let playerSelection;
+let playerscore = 0;
+let computerscore = 0;
+let computerSelection;
+let winner = "";
+
+//function for getting computer choice
+function getComputerChoice(){
+    const choice = ["rock", "paper", "scissor"]//an array for choices
+    return choice[Math.floor(Math.random()*3)];//should return a random value between 0-2
+}
+
+//function for one round of the game
+function playRound(playerSelection,computerSelection,round){
+    //if and else if statments for scenarios
+    if(playerSelection === "rock" && computerSelection === "paper"){
+        computerscore += 1;
+        console.log("You lose " + computerSelection +" beats " + playerSelection);
+    }
+    else if(playerSelection === "rock" && computerSelection === "scissor"){
+        playerscore += 1;
+        console.log("You win "+ playerSelection + " beats " + computerSelection);
+    }
+    else if(playerSelection === "scissors" && computerSelection === "paper"){
+        playerscore += 1;
+        console.log("You win "+ playerSelection + " beats " + computerSelection);
+    }
+    else if(playerSelection === "scissors" && computerSelection === "rock"){
+        computerscore += 1;
+        console.log("You lose " + computerSelection +" beats " + playerSelection);
+    }
+    else if(playerSelection === "paper" && computerSelection === "rock"){
+        playerscore += 1;
+        console.log("You win "+ playerSelection + " beats " + computerSelection);
+    }
+    else if (playerSelection === "paper" && computerSelection === "scissor"){
+        computerscore += 1;
+        console.log("You lose " + computerSelection +" beats " + playerSelection);
+    }
+    else {
+        console.log("draw");
+    }
+}
+
+//function for game with return value of winner
+function game(){
+    let round = 1;
+    for(let i = 0; i < 5; i++){
+        playerSelection = prompt("Enter rock, paper, scissors", "rock");
+        playerSelection = playerSelection.toLocaleLowerCase();//to make user input not case sensitive
+        computerSelection = getComputerChoice();
+        playRound(playerSelection,computerSelection, round);
+        round += 1;
+    }
+    if (playerscore > computerscore){
+        winner = "player";
+    }
+    else if (playerscore < computerscore ){
+        winner = "computer";
+    }
+    else {
+        winner = "draw"
+    }
+    console.log("playerscore: " + playerscore);
+console.log("computerscore: " + computerscore);
+    return winner;
+}
+
+//runs and prints out the winner of the game
+console.log("The winner is the " + game()); 
+            </script>
+        </body>
+</html>
