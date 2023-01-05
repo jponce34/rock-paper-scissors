@@ -1,83 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8"
+        <meta charset="UTF-8">
+        <script src="rps.js"></script>
+        <link rel="stylesheet" href="styles.css">
         <title> rock paper scissors</title>
     </head>
         <body>
-            <script>
-               let playerSelection;//declare an empty computerselection variable
-let playerscore = 0; // set playerscore to zero
-let computerscore = 0; //set computerscore to zero
-let computerSelection; //declare an empty computerselection variable
-let winner = ""; // declare an blank winner
+            <div class="display">
+                <p1>Please select one to start or continue the game </p1>
+            </div>
 
-//function for getting computer choice
-function getComputerChoice(){
-    const choice = ["rock", "paper", "scissor"]//an array for choices
-    return choice[Math.floor(Math.random()*3)];//should return a random value between 0-2
-}
+            <div class="box">
+            <button id="button">rock</button>
+            <button id="button">paper</button>
+            <button id="button">scissors</button>
+            </div>
 
-//function for one round of the game
-function playRound(playerSelection,computerSelection,round){
-    //if and else if statments for scenarios
-    if(playerSelection === "rock" && computerSelection === "paper"){
-        computerscore += 1; //increment computer score by one
-        console.log("You lose " + computerSelection +" beats " + playerSelection);
-    }
-    else if(playerSelection === "rock" && computerSelection === "scissor"){
-        playerscore += 1; //increment player score by one
-        console.log("You win "+ playerSelection + " beats " + computerSelection);
-    }
-    else if(playerSelection === "scissors" && computerSelection === "paper"){
-        playerscore += 1; //increment computer score by one
-        console.log("You win "+ playerSelection + " beats " + computerSelection);
-    }
-    else if(playerSelection === "scissors" && computerSelection === "rock"){
-        computerscore += 1; //increment computer score by one
-        console.log("You lose " + computerSelection +" beats " + playerSelection);
-    }
-    else if(playerSelection === "paper" && computerSelection === "rock"){
-        playerscore += 1; //increment computer score by one
-        console.log("You win "+ playerSelection + " beats " + computerSelection);
-    }
-    else if (playerSelection === "paper" && computerSelection === "scissor"){
-        computerscore += 1; //increment computer score by one
-        console.log("You lose " + computerSelection +" beats " + playerSelection);
-    }
-    else {
-        console.log("draw"); // draw if both selections are the same
-    }
-}
-
-//function for game with return value of winner
-function game(){
-    let round = 1;
-    // declare and set round variable to 1 so player knows what round it is
-    for(let i = 0; i < 5; i++){
-        playerSelection = prompt("Enter rock, paper, scissors", "rock"); //player inputs their selection
-        playerSelection = playerSelection.toLocaleLowerCase();//to make user input not case sensitive
-        computerSelection = getComputerChoice(); //computer selection is randomized through getcomputerchoice function
-        playRound(playerSelection,computerSelection, round); //plays a round of rock paper scissor
-        round += 1;// increments the round by one
-    }
-
-    if (playerscore > computerscore){
-        winner = "player"; // sets winner to player
-    }
-    else if (playerscore < computerscore ){
-        winner = "computer"; // sets winner to computer
-    }
-    else {
-        winner = "draw" // sets winner to draw if score is even
-    }
-    console.log("playerscore: " + playerscore); // prints out player score
-    console.log("computerscore: " + computerscore); // prints out computer score
-    return winner; // returns the winner from the function
-}
-
-//runs and prints out the winner of the game
-console.log("The winner is the " + game()); 
-            </script>
+            <div id="player-choice">player choice:</div>
+            <div id="computer-choice">cpu choice: </div>
+            <div id="results">results: </div>
         </body>
 </html>

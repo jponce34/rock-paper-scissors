@@ -1,0 +1,13 @@
+.display {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border: 2px ;
+}
+.box {
+    padding: 10px;
+    width: 40%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
